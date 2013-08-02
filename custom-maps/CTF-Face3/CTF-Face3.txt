@@ -1,0 +1,19 @@
+***********************************************************************************************
+Name    : CTF-Face3 
+Version : 1.0
+Author  : Kasper "Coreper" van de Laar & HO0815XX
+Players : 10-20
+Credits : Coreper (me),HO0815XX, stevelois, NickG, Odedge, Sp4der, thalos, Nawrot, 1XTreme.
+	  And ofcourse Cedric 'Inoxx' Fiorentino and Epic Games for the original UT2004 map.
+***********************************************************************************************
+
+Install:
+********
+Extract files to:
+My Documents\My Games\Unreal Tournament 3\UTGame\Published\CookedPC\CustomMaps
+
+Description:
+************
+One asteroid, two towers ... Ten thousand headshots.
+
+A conversion of the awesome map from UT2004: Facing Worlds 3.
