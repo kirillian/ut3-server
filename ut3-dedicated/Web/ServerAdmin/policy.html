@@ -1,0 +1,34 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<form method="post" action="<%page.fulluri%>">
+<table id="policies" class="grid">
+<tr>
+    <th>IP Mask</th>
+    <th>Policy</th>
+    <th><input type="hidden" name="action" value="modify" /></th>
+</tr>
+<%policies%>
+</table>
+</form>
+
+<form method="post" action="<%page.fulluri%>">
+<fieldset id="addpolicy">
+<legend>Add a new policy</legend>
+<input type="hidden" name="action" value="add" />
+<dl>
+    <dt><label for="newipmask" title="You can use * as a wildcard.">IP Mask</label></dt>
+    <dd><input type="text" name="ipmask" id="newipmask" class="monospace" /></dd>
+    <dt><label for="poldeny">Policy</label></dt>
+    <dd><input type="radio" name="policy" value="DENY" id="poldeny" checked="checked"/><label for="poldeny">Deny</label>
+    <input type="radio" name="policy" value="ALLOW" id="polallow"/><label for="polallow">Allow</label></dd>
+    <dd><button type="submit">Add policy</button></dd>
+</dl>
+</fieldset>
+</form>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

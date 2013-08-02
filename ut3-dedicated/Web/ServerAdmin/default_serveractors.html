@@ -1,0 +1,19 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<form method="post" action="<%page.fulluri%>" id="serveractors">
+
+<p>Enter the full class name of the server actor you want to add, this includes the package name. For example <code>somepackage.myserveractor</code>.
+There is no check for valid classnames when saving. Check the server logs for possible errors after switching a game.</p>
+
+<textarea name="serveractors" rows="10" cols="40"><%serveractors%></textarea>
+
+<div><button type="submit" name="action" value="save">save</button></div>
+
+</form>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

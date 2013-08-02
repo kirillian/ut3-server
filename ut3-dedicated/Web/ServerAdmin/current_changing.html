@@ -1,0 +1,45 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+<p>
+Changing the current game with the following url:<br />
+<input type="text" readonly="readonly" value="<%newurl%>" size="80" class="monospace"/>
+</p>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function(){
+    $('#messages .info').addClass('loadingMsg');
+    setTimeout('checkMapLoaded()', 1000);
+});
+
+function checkMapLoaded() {
+    setTimeout('checkMapLoaded()', 1000);
+    $.ajax({
+        type: "POST",
+        url: '<%page.fulluri%>/check',
+        data: {ajax: 1},
+        success: ajaxSuccess,
+        error: ajaxError,
+        timeout: 900
+    });
+}
+
+function ajaxSuccess(data, textStatus) {
+    document.location = '<%webadmin.path%>';
+}
+
+function ajaxError(XMLHttpRequest, textStatus, errorThrown) {
+    if (textStatus == 'timeout') return;
+    if (XMLHttpRequest.status == 403) {
+        document.location = '<%webadmin.path%>';
+    }
+}
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

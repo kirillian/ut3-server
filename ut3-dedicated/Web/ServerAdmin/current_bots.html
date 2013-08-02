@@ -1,0 +1,185 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<table>
+<colgroup>
+    <col width="60%" />
+    <col width="40%" />
+</colgroup>
+<tr>
+
+<td>
+<h3>Active characters</h3>
+<p id="charhint">Select the characters you want to (de)activate. The current player limit is <%playerlimit%>.</p>
+<form method="post" action="<%page.fulluri%>" id="charform">
+
+<%factions%>
+
+<div id="charcmds"><input type="hidden" name="action" value="activation" /><button type="submit">(de)activate</button></div>
+</form>
+</td>
+
+<td>
+<h3>Roster</h3>
+<p>Unless explicitly added by name, characters will enter the game in this order.</p>
+
+<form method="post" action="<%page.fulluri%>" id="rosterform">
+<div>
+<input type="hidden" name="action" value="roster" />
+
+<textarea id="botroster" name="botroster" rows="10" cols="20"><%activebots%></textarea>
+
+<button type="submit">save roster</button>
+</div>
+</form>
+</td>
+</tr>
+</table>
+
+<br />
+
+<form method="post" action="<%page.fulluri%>" id="addbotsform">
+<h3>Add Bots</h3>
+<div>
+<input type="hidden" name="action" value="addbots" />
+<input type="text" id="numbots" name="numbots" value="1" title="Minimum: 0; Maximum: 32" size="2" /><button type="submit">add</button>
+</div>
+</form>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$('#botroster').hide();
+
+$(document).ready(function() {
+    $('#botroster').hide();
+    $('#botroster').after('<table style="width: 100%"><tr><td><ol id="jsbotroster"></ol></td></tr></table><p>Drag the characters on the left to this list to add new characters.</p>');
+    
+    var curroster = $('#botroster').val().split("\n");
+    var jsbotroster = $('#jsbotroster');
+    for (i = 0; i < curroster.length; i++)
+    {
+        str = jQuery.trim(curroster[i]);
+        if (str.length > 0)
+        {            
+            var item = jQuery('<li><span class="entry">'+str+'</span></li>');
+            jsbotroster.append(item);
+            getDeleteMe($(item));
+        }
+    }
+    
+    jsbotroster.sortable({ 
+        axis: "y", 
+        containment: "parent",
+        cancel: ".deleteButton",
+        start: function(ev, ui) {
+            $(ui.helper).addClass('dragging');
+        },
+        stop: function(ev, ui) {
+            $(ui.helper).removeClass('dragging');
+        }
+    });
+    
+    $('.charlist .character').draggable({
+        helper: 'clone',
+        zIndex: 100,
+        cursor: 'move',
+        start: function(ev, ui) {
+            $(ui.helper).addClass('dragging');
+        },
+        stop: function(ev, ui) {
+            $(ui.helper).removeClass('dragging');
+        }
+    });
+    
+    $('#botroster').parent().droppable({
+        accept: ".character",
+        hoverClass: "dropHover",
+        activeClass: "droppable",
+        drop: function(ev, ui) {
+            var item = jQuery('<li><span class="entry">'+$(ui.draggable).text()+'</span></li>');        
+            getDeleteMe(item);
+            jsbotroster.append(item);            
+            jsbotroster.sortable("refresh");
+            jsbotroster.sortable("refreshPositions");
+        }
+    });
+    
+    $('#rosterform').submit(function () {
+        updateTextRoster();
+        return true;
+    });
+    
+    $('#charhint').after('<p>There are currently <em id="activecnt">0</em> character(s) selected to be active.</p>');    
+    $('.charlist li :checkbox').change(updateCount);
+    var deselectAll = $('<button type="button">deselect all</button>');
+    deselectAll.click(function() {
+        $('.charlist li :checkbox:checked').each(function() {
+            this.checked = false; 
+        });
+        updateCount();
+    });
+    $('#charcmds').append(" ").append(deselectAll);
+    
+    var tabs = $('<ul id="chartabs"></ul>');
+    $('#charform').prepend(tabs);
+    $('#charform fieldset').each(function() {
+        var legend = $('legend', this);
+        tabs.append('<li><a href="#'+this.id+'"><span>'+legend.text()+' (<em id="cnt_'+this.id+'">0</em>)</span></a></li>');
+        legend.remove();
+    });
+    tabs.tabs();
+    
+    updateCount();
+    
+    var elm = $('#numbots');
+    elm.numeric("\n");
+    elm.SpinButton({min: 0, max: 32, step: 1, page: 5, asint: true});
+});    
+
+function updateCount() {
+    $('#activecnt').text($('.charlist li :checkbox:checked').size());
+    $('#charform fieldset').each(function() {
+        $('#cnt_'+this.id).text($('li :checkbox:checked', this).size());
+    });
+}
+
+function getDeleteMe(forItem) {
+    var res = jQuery('<span class="deleteButton" title="delete this character"></span>');
+    res = $(res);
+    res.click(deleteme);
+    forItem.prepend(res);
+    forItem.hover(function() {
+        $(this).addClass('sorting');
+    }, function() {
+        $(this).removeClass('sorting');
+    });
+}
+
+function deleteme() {
+    $(this).parent().remove();
+    return true;
+}
+
+function updateTextRoster() {
+    // check manual mode  
+    if ($('#jsbotroster').size() == 0)
+    {
+        return;      
+    }
+    var brost = $('#jsbotroster li');
+    var txtlist = "";
+    for (i = 0; i < brost.size(); i++) {
+        txtlist += jQuery.trim($('.entry', brost.get(i)).text())+'\n';
+    }
+    $('#botroster').val(txtlist);
+}
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

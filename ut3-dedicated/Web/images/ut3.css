@@ -1,0 +1,863 @@
+html, body {
+	background-image: url(background.png);
+	background-repeat: repeat-y;
+	background-position: 0 0;
+	background-color: #faf8f8;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 1em;
+	color: #000000;	
+	padding: 0 0 0 235px;
+	margin: 0;
+}
+
+h1, h2, h3, h4 {
+	margin: 0;
+}
+
+fieldset h4 {
+	border-bottom: 1px solid #520000;
+}
+
+form {
+	margin: 0;
+}
+
+a {
+	color: #800202;
+}
+
+input {
+	font-size: 1em;
+}
+
+input[type="text"], input[type="password"], input[type=""] {
+	border: 1px solid #C5ADAD;
+	padding-left: 0.1em;
+	background-color: #fffafa;
+	height: 1.25em;
+	color: #444444;
+}
+
+textarea {
+	border: 1px solid #C5ADAD;
+	padding-left: 0.1em;
+	background-color: #fffafa;
+	color: #444444;
+}
+
+select {
+	border: 1px solid #C5ADAD;
+	background-color: #fffafa;
+	color: #444444;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type=""]:hover, textarea:hover, select:hover,
+input[type="text"]:focus, input[type="password"]:focus, input[type=""]:focus, textarea:focus, select:focus {
+	background-color: White;
+	border-color: #520000;
+	color: black;
+}
+
+label[for] {
+	cursor: pointer;
+}
+
+label[for]:hover {
+	color: #520000;
+}
+
+input[readonly="readonly"], textarea[readonly="readonly"] {
+	background-color: #EDE6E6;
+	color: black;
+}
+
+dt {
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+dt:after {
+	content: ":";
+}
+
+dd {
+	margin-bottom: 0.1em;
+}
+
+legend {
+	font-weight: bold;
+	color: #f0f0f0;
+	padding: 0 0.75em 0 0.75em;
+	background-image: url(hbar.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	line-height: 32px;
+}
+
+fieldset {
+	border: 1px solid #520000;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+
+button, input.button {
+	background-color: #520000;
+	color: #ffffff;
+	border-width: 1px;
+	border-color: #520000;
+	border-style: solid;
+	height: 1.8em;
+}
+
+button:hover, input.button:hover {
+	background-color: #730000;
+}
+
+button[disabled="disabled"], button[disabled="disabled"]:hover {
+	background-color: #EDE6E6;
+	border-color: #936A6A;
+	color: #936A6A;
+}
+
+td {
+	vertical-align: top;
+}
+
+th {
+	padding: 0.2em 0.4em 0.1em 0.4em;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: white; /*background-color: #520000;*/
+	background-image: url(hbar.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+
+th a {
+	color: white;
+}
+
+p {
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+
+code {
+	background-color: #FFE3E3;
+	border: 1px solid #FFBFBF;
+	padding: 0 2px 0 2px;
+	border-top: none;
+	border-bottom: none;
+}
+
+#header {
+	background-image: url(header.gif);
+	background-repeat: no-repeat;
+	background-position: top right;
+	height: 150px;
+	padding-top: 30px;
+	padding-right: 5px;
+	text-align: right;
+	color: white;
+}
+
+#header h1 {
+	background-image: url(ut3-logo.png) !important;
+	background-image: url(ut3-logo-ie6.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 240px;
+	height: 200px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#header h1 span {
+	display: none;
+}
+
+#header #adminName {
+	position: absolute;
+	top: 190px;
+	left: 0px;
+	width: 240px;
+	text-align: center;
+	color: #f0e0e0;
+}
+
+#header #adminName span {
+	font-style: italic;
+}
+
+#header #pageUri {
+	font-family: monospace;
+	display: none;
+}
+
+#header p {
+	margin: 0;
+	width: 500px;
+	margin-left: auto;
+}
+
+#content {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+#content h2, #content h3 {
+	background-image: url(hbar.png);
+	background-repeat: no-repeat;
+	line-height: 32px;
+	color: white;
+	padding-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#menu {
+	background: #520000;
+	background-image: url(background.png);
+	background-repeat: repeat-y;
+	background-position: 0 -255px;
+	color: #ffffff;
+	width: 200px;
+	padding-left: 5px;
+	float: left;
+	position: absolute;
+	top: 225px;
+	left: 0px;
+}
+
+#menu h2 {
+	display: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu ul {
+	margin: 0;
+	padding-left: 0;
+}
+
+#menu ul ul {
+	padding-left: 1em;
+}
+
+#menu a {
+	padding: 0.2em;
+	padding-left: 20px;
+	display: block;
+	color: white;
+	text-decoration: none;
+}
+
+#menu a:hover {
+	text-decoration: underline;
+}
+
+#menu a.active {
+	background-image: url(active.png);
+	background-position: left 6px;
+	background-repeat: no-repeat;
+}
+
+#menu a:hover.active {
+	text-decoration: none;
+}
+
+#footer {
+	padding-top: 1em;
+	clear: both;
+	text-align: center;
+	font-size: 0.7em;
+}
+
+#chatlog {
+	border: 1px solid #800202;
+	padding: 2px;
+}
+
+#chat {
+	margin-top: 2px;
+}
+
+#chat input {
+	width: 90%;
+}
+
+#chat button, #chat input.button {
+	width: 9%;
+}
+
+.chatmessage {
+	padding-left: 50px;
+	text-indent: -50px;
+}
+
+#content .username {
+	color: #363636;
+}
+
+#chatlog .username {
+	padding-right: 0.1em;
+}
+
+#chatlog .teamnotice {
+	font-size: 75%;
+}
+
+.teamcolor {
+	background-color: silver;
+	padding-left: 0.4em;
+}
+
+.teamchat {
+	border: 1px solid silver;
+	border-width: 1px 0 0 0.6em;
+	padding-left: 55px;
+	text-indent: -50px;
+}
+
+.teamchat .teamcolor {
+	display: none;
+}
+
+#teamsayctrl input {
+	width: auto;
+}
+
+#consoleResults .command {
+	color: #520000;
+}
+
+#consoleResults {
+	font-family: monospace; 
+	overflow: auto;
+	border: 1px solid #520000;
+	padding: 2px;
+	margin-top: 1em;
+}
+
+table.grid {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+}
+
+table.grid td {
+	border: 1px solid #520000;
+}
+
+table.grid td {
+	vertical-align: middle;
+}
+
+table.noborder {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+}
+
+table.noborder td {
+	border: 0px solid #520000;
+}
+
+tr.odd {
+	background-color: #edd;
+}
+
+th.header, th.headerSortUp, th.headerSortDown {
+	padding-left: 0em;
+	padding-right: 0em;
+}
+
+.header span {
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-left: 0.4em;
+	padding-right: 16px;
+	cursor: pointer;
+}
+
+.headerSortUp span {
+	background-image: url(sort.png) !important;
+	background-image: url(sort.gif);
+	background-repeat: no-repeat;
+	background-position: right 1px;
+	padding-left: 0.4em;
+	padding-right: 16px;
+	cursor: pointer;
+}
+
+.headerSortDown span {
+	background-image: url(sort.png) !important;
+	background-image: url(sort.gif);
+	background-repeat: no-repeat;
+	background-position: right -49px;
+	padding-left: 0.4em;
+	padding-right: 16px;
+	cursor: pointer;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.monospace {
+	font-family: monospace;
+}
+
+.mutatorGroup {
+	display: inline;
+	vertical-align: top;
+	margin-bottom: 0em;
+	margin-right: 0.5em;
+}
+
+.mutatorGroup div.padding {
+	width: 200px;
+	white-space: nowrap;
+}
+
+.extmutator {
+	display: inline;
+	vertical-align: top;
+	margin-bottom: 0em;
+	margin-right: 0.5em;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
+.extmutator span.padding {
+	display: block;
+	width: 200px;
+	overflow: hidden;
+}
+
+#throbber {
+	background-image: url(uthrobber.gif);
+	background-position: center;
+	background-color: Black;
+	background-repeat: no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	cursor: wait;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+}
+
+#throbber span {
+	display: none;
+}
+
+div.message {
+	border: 1px solid gray;
+	padding: 1em;
+	padding-left: 3.2em;
+	margin: 1em;
+	background-repeat: no-repeat;
+	background-position: 0.7em 0.65em;
+}
+
+#messages .error {
+	border-color: red;
+	background-color: #fee;
+	background-image: url(error.gif);
+}
+
+#messages .warn {
+	border-color: #FFD700;
+	background-color: #ffe;
+	background-image: url(warning.gif);
+}
+
+#messages .info {
+	border-color: #BBBCFF;
+	background-color: #eef;
+	background-image: url(information.gif);
+}
+
+#messages .loadingMsg {
+	background-image: url(throbber.gif);
+}
+
+#jsmaplist ul, #jsmaplist ol, #jsbotroster {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+ 
+#jsmaplist ul, #jsbotroster {
+	margin-right: 1em;
+}
+
+#jsmaplist li, #jsbotroster li {
+	cursor: move;
+	white-space: normal;
+	margin-left: 1.25em;
+}
+
+#jsmaplist #jsmapcycle li, #jsbotroster li {
+	margin-left: 2em;
+	padding-right: 0.5em;
+	white-space: nowrap;
+}
+
+#jsmaplist #jsmapcycle li span, #jsbotroster li span {
+	margin-left: 5px;
+	white-space: nowrap;
+}
+
+#jsmlctrls button {
+	margin-bottom: 2px;
+	width: 100%;
+}
+
+.sorting {
+	background-color: #FFE5E5;
+}
+
+.dragging {
+	list-style: none;
+	border: 1px solid #FFCACA;
+	background: #FFE5E5;
+	padding: 0.05em 0.3em 0.05em 0.3em;
+	white-space: nowrap;
+	cursor: move;
+}
+
+.droppable {
+	background-color: #FFF0F0;
+}
+
+.dropHover {
+	background-color: #FFE4E4;
+}
+
+.deleteButton, .editButton {
+	display: block;
+	width: 14px;
+	height: 1em;
+	background-repeat: no-repeat;
+	background-position: center;
+	float: left;
+	cursor: pointer;
+}
+
+.sorting .deleteButton {
+	background-image: url(delete.png);
+}
+
+.sorting .editButton {
+	background-image: url(edit.png);
+}
+
+.dragging .deleteButton, .dragging .editButton {
+	display: none;
+}
+
+.inlineEdit {
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	background-image: url(edit.png);
+	padding-left: 20px;
+}
+
+.inlineEdit span {
+	display: none;
+}
+
+input.spin-button {
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 1px;
+	background-image: url(spinbtn.png);
+}
+
+input.spin-button.up {
+	cursor: pointer;
+	background-position: 100% -49px;
+}
+
+input.spin-button.down {
+	cursor: pointer;
+	background-position: 100% -99px;
+}
+
+ul.charlist {
+	margin: 0;
+	padding: 0;
+}
+
+ul.charlist li {
+	list-style: none;
+}
+
+#jsbotroster {
+	margin-bottom: 0.5em;
+}
+
+/* for the tabs */
+.ui-tabs-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 4px;
+}
+
+.ui-tabs-nav:after {
+	display: block; /* clearing without presentational markup, IE gets extra treatment */
+	clear: both;
+	content: " ";
+}
+
+.ui-tabs-nav li {
+	float: left;
+	margin: 0 0 0 1px;
+	min-width: 84px; /* be nice to Opera */
+}
+
+.ui-tabs-nav a, .ui-tabs-nav a span {
+	display: block;
+	padding: 0 10px;
+}
+
+.ui-tabs-nav a {
+	margin: 1px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
+	padding-left: 0;
+	font-weight: bold;
+	font-size: 90%;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap; /* required in IE 6 */
+	outline: 0; /* prevent dotted border in Firefox */
+	color: #530000;
+	margin-bottom: 1px;
+}
+
+.ui-tabs-nav .ui-tabs-selected a {
+	color: white;
+	margin-bottom: 0px;
+	padding-bottom: 1px;
+}
+
+.ui-tabs-nav a span {
+	width: 64px; /* IE 6 treats width as min-width */
+	min-width: 64px;
+	height: 18px; /* IE 6 treats height as min-height */
+	min-height: 18px;
+	padding-top: 6px;
+	padding-right: 0;
+}
+
+*>.ui-tabs-nav a span {
+	width: auto; /* hide from IE 6 */
+	height: auto;
+}
+
+.ui-tabs-nav .ui-tabs-selected a span {
+}
+
+.ui-tabs-nav .ui-tabs-selected a, .ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active {
+	background: url(hbar.png) no-repeat center top;
+	color: #C8A8A4;
+}
+
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited, .ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited {
+	cursor: default; /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+	color: white;
+}
+
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active {
+	cursor: pointer; /* @ Opera, we need to be explicit again here now... */
+}
+
+.ui-tabs-panel {
+	border-top: 1px solid #530000;
+	padding-top: 5px;
+}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav {
+	display: inline-block; /* auto clear, @ IE 6 & IE 7 Quirks Mode */
+}
+
+*:first-child+html .ui-tabs-nav {
+	display: inline-block; /* @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+}
+
+.ui-tabs-hide {
+	display: none;
+}
+
+#creditRoll {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	cursor: default;
+}
+
+.creditTitle {
+	background-image: url(ut3-logo.png) !important;
+	background-image: url(ut3-logo-ie6.png);
+	background-repeat: no-repeat;
+	background-position: 20px 0px;
+	height: 205px;
+	width: 250px;
+}
+
+.creditHead {
+	font-size: 2em;
+	font-weight: bold;
+	padding-left: 20px;
+	color: white;
+}
+
+.creditSection {
+	width: 200px;
+	padding-left: 20px;
+	color: white;
+	font-size: 1.3em;
+}
+
+.creditItem {
+	padding-left: 270px;
+	font-size: 1.5em;
+	line-height: 1.7em;
+}
+
+.creditItem span {
+	cursor: crosshair;
+}
+
+#creditAmmo {
+	position: absolute;
+	top: 63px;
+	right: 0;
+	padding: 7px;
+	padding-left: 15px;
+	background-image: url(hbar.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	cursor: default;
+}
+
+#creditAmmo span {
+	display: block;
+	float: left;
+	width: 20px;
+	height: 16px;
+	background-image: url(active.png);
+	background-repeat: no-repeat;
+}
+
+#promptDialog {
+	background-image: url(dimmed.png);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	cursor: default;
+	display: none;
+}
+
+#promptWindow {
+	cursor: auto;
+	margin: auto;
+	width: 33%;
+	margin-top: 25%;
+	background-color: #faf8f8;
+	padding: 1em;
+	border: 1px solid #520000;
+}
+
+#promptdialog input {
+	width: 100%;
+}
+
+#promptdialog button {
+	margin: 5px 5px 0 0;
+}
+
+#menueditor {
+	float: right;
+	border: 1px solid #520000;
+	padding: 5px;
+	overflow: auto;
+	position: relative;
+	background-color: white;
+	display: none;
+}
+
+#menueditor a {
+	text-decoration: none;
+	cursor: move;
+}
+
+#menueditor a.denied {
+	color: gray;
+}
+
+textarea.dropHover {
+	border-color: #520000;
+	color: black;
+}
+
+#newsdesk div {
+	max-height: 100px;
+	overflow: auto;
+}
+
+#newsdesk div#newsdeskts {
+	text-align: right;
+	font-size: 0.7em;
+	color: #520000;
+	font-style: italic;
+	width: 200px;
+	overflow: hidden;
+	float: right;
+	margin-top: -18px;
+}
+
+.settingsraw {
+    display: none;
+}
+
+#skinSelector {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+#skinSelector h5 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	padding-right: 0.5em;
+	font-size: 1em;
+}
+
+#skinSelector select {
+	display: inline;
+	font-size: 1em;
+}

@@ -1,0 +1,85 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<fieldset id="mloverview">
+<legend>Map lists</legend>
+<form id="editlist" method="post" action="<%page.fulluri%>">
+<div>
+    <select id="maplistid" name="maplistid">
+    <option value=""></option>
+    <%maplists%>
+    </select>
+    <button type="submit" id="btnselect">edit map list</button>
+</div>
+</form>
+<form id="newlist" method="post" action="<%page.fulluri%>">
+<div>
+    <br />
+    <label for="newlistid">Map list name:</label>
+    <input type="text" id="newlistid" name="maplistid" value=""/>
+    <button type="submit" name="action" value="create">create new list</button>
+</div>
+</form>
+</fieldset>
+
+<%editor%>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+var submitCreate = false;
+
+$(document).ready(function(){
+    $('#maplistid').change(function(){
+        $('#editlist').submit();
+    });
+    $('#newlist').submit(function() {
+        var nlid = jQuery.trim($(this.maplistid).val());
+        var isValid = true;
+        if (nlid.length == 0)
+        {
+            alert('The map list name can not be empty');
+            isValid = false;
+        }
+        else {
+            $('#mloverview option').each(function() {
+                var item = $(this);
+                if (item.text().toUpperCase() == nlid.toUpperCase()) {
+                    alert('There is already a map list with that name');
+                    isValid = false;
+                }
+            });
+        }
+        if (!isValid) return false;
+    });
+    $('#newlist div *').hide();
+    $('#mloverview form, #mloverview div').css('display', 'inline');
+    $('#newlist button').show().click(function () {
+        if (!submitCreate) {
+            messagePrompt('Enter the name of the new map list', promptedName, '');
+            return false;
+        }
+        submitCreate = false;
+        return true;
+    });
+});
+
+function promptedName(newname) {
+    var mapid = jQuery.trim(newname);
+    if (mapid.length > 0) {
+        submitCreate = true;
+        $('#newlistid').val(mapid);
+        $('#newlist button').click();
+        return true;
+    }
+    return false;
+}
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

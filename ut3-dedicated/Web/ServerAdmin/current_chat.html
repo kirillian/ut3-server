@@ -1,0 +1,88 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<div id="chatlog">
+<%chat.log%>
+<div id="refresh"><a href="<%page.fulluri%>?rnd=<%random%>#chatlog">Update...</a></div>
+</div>
+
+<div id="chat">
+<form id="chatform" action="<%page.fulluri%>#chatlog" method="post">
+<p><input type="hidden" name="rnd" value="<%random%>" /><input type="text" id="chatmessage" name="message" value="" size="80" /><button type="submit">say</button></p>
+<div id="teamsayctrl"><%teamsaycontrols%></div>
+</form>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+    $('#refresh').remove();
+    $('#chatmessage').focus();
+    setTimeout('getMessages()', <%chat.refresh%>);
+    $('#chat').after('<div><input id="autoupdatechat" type="checkbox" checked="checked" value="true" /><label for="autoupdatechat">Auto update chat log</label></div>');
+    $('#teamsayctrl input').click(function(){        
+        $('#chatmessage').focus();
+    });
+    $('#teamsayctrl label').accessKeys();
+});
+
+$('#chatform').submit(function() {
+    var teamsayval = -1;
+    var teamsayelm = $('#chatform :radio:checked');
+    if (teamsayelm.size() > 0)
+    {
+        teamsayval = teamsayelm.val();
+    }
+    $.ajax({
+        type: "POST",
+        url: '<%page.fulluri%>/data',
+        data: {ajax: 1, message: $('#chatmessage').val(), teamsay: teamsayval},
+        success: chatMessage,
+        error: ajaxError
+    });
+    $('#chatmessage').val('');
+    return false;
+});
+
+function getMessages() {
+    if ($('#autoupdatechat:checked').size() > 0) {
+        $.ajax({
+            type: "POST",
+            url: '<%page.fulluri%>/data',
+            data: {ajax: 1},
+            success: chatMessage,
+            error: ajaxError
+        });
+    }
+    setTimeout('getMessages()', <%chat.refresh%>);
+}
+
+function chatMessage(data, textStatus) {
+    if (data == '') return;
+    cnt = $('.chatmessage').size()-1;
+    $('#chatlog').append(data);
+    x = $('.chatmessage:gt('+cnt+')');
+    x.hide();
+    x.fadeIn("fast");
+    
+    cnt = $('.chatmessage').size();
+    oldmsgs = cnt-50;
+    $('.chatmessage:lt('+oldmsgs+')').remove();
+    
+    chtpos = $('#chatmessage').offset();
+    window.scrollTo(0, chtpos.top);
+}
+
+function ajaxError(XMLHttpRequest, textStatus, errorThrown) {
+    if (XMLHttpRequest.status == 403) {
+        document.location = '<%page.fulluri%>';
+    }
+}
+//]]>
+</script>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

@@ -1,0 +1,37 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<p>Note: editing mutator settings will result in the loading of the package. 
+If the mutator is currently not active the current players might need to
+download the newly loaded package.</p>
+
+<form method="post" action="<%page.fulluri%>" id="mutatorselect">
+<fieldset>
+<legend>Mutator selection</legend>
+    <select id="mutator" name="mutator">
+    <option value=""></option>
+    <%mutators%>
+    </select>
+    <button type="submit" name="action" value="select" id="btnselect">edit mutator</button>
+</fieldset>
+</form>
+
+<%settings%>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function(){
+    $('#mutator').change(function(){
+        $('#mutatorselect').submit();
+    });
+});
+    
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

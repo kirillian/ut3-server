@@ -1,0 +1,150 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<%news%>
+
+<fieldset id="notesField" title="Here you can leave some notes. They will be stored on the server so other administrators can see and edit them.">
+<legend>Notes</legend>
+<form action="<%page.fulluri%>" method="post" id="notesForm">
+<div>
+<textarea id="notes" name="notes" rows="5" cols="80" style="width:100%;"><%notes%></textarea>
+</div>
+<div id="notectrl">
+<button type="submit" name="action" value="save">Save</button>
+</div>
+</form>
+</fieldset>
+
+<table width="100%">
+<colgroup>
+    <col width="50%"/>
+    <col width="50%"/>
+</colgroup>
+<tr>
+<td>
+
+<h3>Current Game</h3>
+<dl id="currentGame">
+    <dt>Server Name</dt>
+    <dd><%server.name%></dd>
+    <dt>Administrator</dt>
+    <dd><a href="mailto:<%server.admin.email%>"><%server.admin.name%></a></dd>
+    <dt>MOTD</dt>
+    <dd><%server.motd%></dd>
+    <dt>Game type</dt>
+    <dd><%game.name%><br /><code><%game.type%></code></dd>
+    <dt>Map</dt>
+    <dd><code><%map.name%></code><br /><%map.title%></dd>
+    <dt>Mutators</dt>
+    <dd><%mutators%></dd>
+</dl>
+
+</td>
+<td>
+
+<h3>Rules</h3>
+<dl id="currentRules">
+    <dt>Time Limit</dt>
+    <dd><%rules.timelimit%> minutes<br /><%time.remaining%> seconds remaining</dd>
+    <dt>Goal Score</dt>
+    <dd><%rules.goalscore%></dd>
+    <dt>Maximum Lives</dt>
+    <dd><%rules.maxlives%></dd>
+    <dt>Players (Max)</dt>
+    <dd><%rules.numplayers%> (<%rules.maxplayers%>)</dd>
+    <dt>Spectators (Max)</dt>
+    <dd><%rules.numspectators%> (<%rules.maxspectators%>)</dd>
+</dl>
+
+</td>
+</tr>
+</table>
+
+<h3>Players</h3>
+<table id="players" class="grid">
+<thead>
+<tr>
+    <th>&#160;</th>
+    <th><a href="<%page.fulluri%>?sortby=name&amp;reverse=<%reverse.name%>" class="sortable <%sorted.name%>">Player name</a></th>
+    <th><a href="<%page.fulluri%>?sortby=ranking&amp;reverse=<%reverse.ranking%>" class="sortable <%sorted.ranking%>">Ranking</a></th>
+    <th><a href="<%page.fulluri%>?sortby=score&amp;reverse=<%reverse.score%>" class="sortable <%sorted.score%>">Score</a></th>
+    <th><a href="<%page.fulluri%>?sortby=deaths&amp;reverse=<%reverse.deaths%>" class="sortable <%sorted.deaths%>">Deaths</a></th>
+    <th><a href="<%page.fulluri%>?sortby=kills&amp;reverse=<%reverse.kills%>" class="sortable <%sorted.kills%>">Kills</a></th>
+    <th><a href="<%page.fulluri%>?sortby=ping&amp;reverse=<%reverse.ping%>" class="sortable <%sorted.ping%>">Ping</a></th>
+    <th>Bot</th>
+    <th>Admin</th>
+    <th title="Spectator">Spec.</th>
+</tr>
+</thead>
+<tbody>
+<%players%>
+</tbody>
+</table>
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+     // bug in sortedtable causes a javascript error when the table is empty.
+    if ($("#players td").size() > 1) {
+        $("#players th a").each(function(){
+            jthis = $(this);
+            jthis.before(jthis.html());
+            jthis.remove();
+        });
+        $("#players th").wrapInner("<span></span>");
+        $("#players").tablesorter({sortList:[[3,1]], widgets: ['zebra']});
+    }
+    
+    $('#notectrl').hide();
+    $('#notes').change(function() {
+        $.ajax({
+            type: "POST",
+            url: '<%page.fulluri%>/data',
+            data: {ajax: 1, action: 'save', notes: $('#notes').val()},
+            success: handleMessages,
+            error: ajaxError
+        });
+    });
+    
+    var fields = $('#content fieldset');
+    
+    if (fields.size() > 1) {
+        var tabs = $('<ul id="infotabs"></ul>');
+        $('#content').prepend(tabs);
+        fields.each(function() {
+            var title = $('legend', this);
+            tabs.append('<li><a href="#'+this.id+'"><span>'+title.text()+'</span></a></li>');
+            title.remove();
+        });
+        tabs.tabs();
+    }
+});
+
+function ajaxError(XMLHttpRequest, textStatus, errorThrown) {
+    if (XMLHttpRequest.status == 403) {
+        document.location = '<%page.fulluri%>';
+    }
+}
+
+function handleMessages(data, textStatus) {
+    if (data.length == 0) {
+        alert("Network error during updating.");
+    }
+    var jdata = $(data);
+    var old = $('#messages .oldMessage');
+    var newmsg = $(jdata.find('request messages').text());
+    newmsg.hide();
+    $('#messages').prepend(newmsg);
+    newmsg.fadeIn();
+    old.remove();
+    $('#messages *').addClass('oldMessage');
+}
+
+//]]>
+</script>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

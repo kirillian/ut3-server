@@ -1,0 +1,215 @@
+v1.17 - 2009-09-13 (requires UT3 2.1)
+-------------------------------------
+- fixes the issue where changes to game profile disappeared when a new map
+  was loaded.
+- made some changes to the way the menu permissions are validated, the
+  urls used for AJAX requests are now dependent to their base url. This
+  addresses issues #74, #75
+
+v1.16 - 2009-07-30 (requires UT3 2.1)
+-------------------------------------
+- added a warning when the localization file is corrupt. This causes missing
+  menus.
+- changed the method of detecting active mutators
+- added functionality to configure server actors
+
+v1.15 - 2009-05-17 (requires UT3 2.1)
+-------------------------------------
+- fixed a few typos
+- added a setting to validate the IP in sessions. This increases security by 
+  making sessions less prone to hijacking.
+- added a basic translit system which allows conversion for certain information.
+  this can be used to convert Cyrillic characters to their ASCII equivalent.
+  This translit system is also used by the chatlog. See the file
+  Localization/RUS/WebAdmin.rus how you should build your translit table.
+  The translit system is needed because the webadmin can only produce ASCII (or 
+  UTF-8) output. Internally UE3 uses UTF-16, which can not be used by the
+  webadmin. 
+  Note: The translit system is not used for input processing.
+  Note: Because the tanslit table is stored in a localization file you need to
+  have the appropriate Language set in UTEngine.ini or you have to manually
+  copy the table to WebAdmin.int
+- made all text localized, people can now localize the WebAdmin if they feel
+  like it. To localize the HTML files define the HTMLSubDirectory localized
+  variable, and create the proper files in the Web/WebAdmin/??? directory.
+  Note: the <!-- #include ... --> files are not transparently handled.
+- Don't send gzip encoded files to Safari browsers, they lies about supporting
+  gzip encoded files (or at least, for javascript)
+- various browser tweaks
+
+v1.14.0 - 2009-04-05 (for UT3 2.0)
+v1.14.1 - 2009-04-05 (for UT3 2.1)
+----------------------------------
+- added support to dynamically add skins to the webadmin. To register a skin
+  simply create an .ini file in the Config directory with the following content
+    [SomeName WebAdminSkin]
+    FriendlyName=My Own Skins
+    CssFile=/images/myskin/main.css
+- added option to /current/bots to add an arbitrary number of bots
+- added a system settings page to change webadmin settins
+- reduced loading of gametype classes to filter the mutator lists, this reduces
+  loading of additional packages during the game (which clients would need to
+  download). You can force rebuild of the caches by visiting this (hidden) page:
+  http://<webadmin.ip>/ServerAdmin/system/allowancecache 
+  http://<webadmin.ip>/ServerAdmin/system/settingscache
+  (note: this is something you might want to do after installing new or 
+  upgrading gametypes/mutators)
+
+v1.13 - 2009-03-22
+------------------
+Note: Patch 2.1 is required
+- filter duplicate gamemode/maps/mutator registrations (check the log file for
+  detections).
+- fixed XHTML comppliance issues for all pages
+- added tooltips to the settings pages with additional information about the
+  settings.
+- added "Max Replay Limit" setting to the map list editor
+
+v1.12 - 2009-03-09
+------------------
+- fixed unsaved settings bKickMissingCDHashKeys, TimeToWaitForHashKey
+- fixed "No Custom Characters" showing up as a number field
+- fixed bug #0000065: Score Limit setting appears twice
+- should no longer disable "achievements" 
+
+v1.11.1 - 2009-03-07
+--------------------
+- lowered the minimum engine version for the Linux Server 2.0 beta
+
+v1.11 - 2009-03-07
+------------------
+- fixed creation of new maplists when javascript was enabled
+- fixed spaces in map names when saving maplists under certain circumstances
+- fixed an accessed none in the chat log functionality
+- added the setting to disable seamless level loading:
+    Settings > General > Administration > Disable seamless loading
+
+v1.10 - 2009-02-28
+------------------
+- added an game engine check at webadmin startup
+- some minor adjustments
+- added text/voice muting to /current/player page. Note: voice muting is a
+  force action to all clients. This means that a forced unmute removes the
+  client's own mute action. 
+
+v1.9 - 2009-02-20
+-----------------
+Note: Patch 2.0 is required
+- added sessionban functionality
+- added spawn protection time setting for gametypes
+- new voting configuration functionality, if it doesn't show up, add the 
+  following query handler: WebAdmin.QHVoting
+- added note taking functionality to the "current" page  
+
+v1.8 - 2008-12-05
+-----------------
+- fixed bot roster editing when the roster was empty
+- konami code
+- added an alternative authentication module: WebAdmin.MultiWebAdminAuth
+  this one allows multiple user accounts
+- added some gametype settings magic that shows the best match for available
+  settings for an gametype that did not provide its own settings class.  
+- added "news" to the home page
+
+v1.7 - 2008-09-21
+-----------------
+- security bug fix
+
+v1.6 - 2008-08-23
+-----------------
+- fixed bug #52: Hard to remove bots from bot roster 
+- addressed bug #51: Page does not refresh after changing game (IE6)
+- "game deficulty" is now presented as a list of predefined values (0 to 7), 
+  custom values can still be entered. 
+
+v1.5 - 2008-08-08
+-----------------
+Note: Patch 1.3 is required
+- Upgraded to jQuery 1.2.6 and jQuery UI 1.5.2
+- playercontrollers created for the webadmin users are now shared between admins
+  using the same name. This is a resource optimization fix
+- some UI tweaks  
+
+v1.4 - 2008-06-03
+-----------------
+Note: Patch 1.3 is required
+- demorec player no longer shows up in the player lists
+- added config option for "No Custom Characters" (Settings/General/Players)
+- added settings for map voting (Settings/General/Map Voting)
+
+v1.3 - 2008-05-18
+-----------------
+- fixed chat functionality when team chat support is disabled
+- added admin password check
+- changes to the server's name will now take immediate effect and the 
+  master server information will be updated
+
+v1.2 - 2008-05-07
+-----------------
+- added team chat support to the chat console. Can be disabled by setting
+    [WebAdmin.QHCurrent]
+    bEnableTeamChat=false
+- added optional chat logging, to enabled it set the following in the 
+  UTWebAdmin.ini
+    [WebAdmin.WebAdmin]
+    bChatLog=true
+  Team chat will only be logged when bEnableTeamChat was set to true
+  The following config options are available for the chat logging file names:
+    [WebAdmin.Chatlog]
+    ; if true unique file names will be created
+    bUnique=false
+    ; if true a timestamp will be included in the filename
+    bIncludeTimeStamp=true
+- fixed a memory leak in the non-player PlayerControllers (i.e. 
+  MessagingSpectator) during seamless traveling.
+- increased upper limit of RestartWait setting
+- added a "clear" and "add missing" button to the map list editor
+
+v1.1 - 2008-04-06
+-----------------
+- fixed mutator filtering for gametypes
+- Admin* console commands are now supported in the management console
+- Changed the login form to allow different timeouts. "Till next map load" was
+  the previous behavior when you didn't check "remember me". In now defaults to
+  "session" which will remember the authentication for the browser session.
+  This does not apply when using bHttpAuth
+- fixed saving of various elements of the general settings  
+
+v1.0 - 2008-03-24
+-----------------
+- various small performance fixes:
+  - Mutator\Gametype settings pages load faster and use less memory
+- fixed issue where the messaging spectator is registered with the online 
+  subsystem resulting in a server crash during the level switch GC.
+
+Bug Tracker Changes
+- 0000040: [Front end (HTML/CSS/JavaScript)] Re: 0000017 - Ping is not 
+  read from server properly - resolved.
+
+v0.10 - 2008-03-16
+------------------
+- Added the ability to manage the bots. You can also edit the bot roster 
+  (similar and drop interface as the maplist editor)
+- Various HTML/CSS tweaks.
+- General settings are now grouped by section  
+
+v0.9 - 2008-03-07
+-----------------
+- Started including a changelog with the distribution
+- Added config option to set the storage class for the additional map 
+  lists:
+    [WebAdmin.QHDefault]
+    AdditionalMLClass=WebAdmin.AdditionalMapListsAlt
+  Default class is WebAdmin.AdditionalMapLists which stores the info in 
+  UTGame.ini . Alternatively there is the class 
+  WebAdmin.AdditionalMapListsAlt which stores the maplists in 
+  UTAdditionalMapLists.ini
+- Added WebAdmin version information to the log and HTML meta data
+- Finished work on the "advanced" configuration mechanism for 
+  gametypes/mutators
+- Added settings classes for the stock mutators which have configuration 
+  options
+
+Bug Tracker Changes:
+- 0000037: [Front end (HTML/CSS/JavaScript)] Firefox 3 Beta 3 and Change 
+  Game Type - resolved.

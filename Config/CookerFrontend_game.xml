@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<GameSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	XGDFileRelativePath="..\..\UTGame\Build\DVD-Layout.xgd" PS3TitleID="BLUS30086">
+  <SyncPaths>
+    <PathInfo Path="Binaries\" Wildcard="%GAME%.exe" bIsRecursive="false" bIsForTarget="false" bIsForDemo="false" />
+    <PathInfo Path="Binaries\" Wildcard="%GAME%.com" bIsRecursive="false" bIsForTarget="false" bIsForDemo="false" />
+    <PathInfo Path="Binaries\" Wildcard="%GAME%_RunSeekfree.bat" bIsRecursive="false" bIsForTarget="false" bIsForDemo="false" />
+    <PathInfo Path="Binaries\Lib\Release\" Wildcard="%GAME%.pdb" bIsRecursive="true" bIsForTarget="false" bIsForDemo="false" />
+    <PathInfo Path="Binaries\" Wildcard="UT3.exe" bIsRecursive="false" bIsForTarget="true" bIsForDemo="true" />
+    <PathInfo Path="Binaries\" Wildcard="UT3.com" bIsRecursive="false" bIsForTarget="true" bIsForDemo="true" />
+    <PathInfo Path="Binaries\Lib\ReleaseShippingPC\" Wildcard="UT3.pdb" bIsRecursive="false" bIsForTarget="false" bIsForDemo="false" /> 
+  </SyncPaths>
+</GameSettings>

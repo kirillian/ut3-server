@@ -1,0 +1,18 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<div id="consoleCommand">
+<p><em>Note:</em> not all console commands will return information. This does not mean that they were not executed.</p>
+<form action="<%page.fulluri%>" method="post">
+<p><input type="text" name="command" value="" size="80" /><button type="submit">execute</button></p>
+</form>
+</div>
+
+<div id="consoleResults" style="<%console.visible%>">&gt; <span class="command"><%console.command%></span><br />
+<%console.results%></div>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

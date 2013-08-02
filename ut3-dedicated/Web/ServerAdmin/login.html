@@ -1,0 +1,28 @@
+<!-- #include file="header.inc" -->
+<div id="content">
+<form method="post" action="<%page.fulluri%>">
+<fieldset>
+<legend>Login</legend>
+<input type="hidden" name="token" value="<%token%>" />
+<dl>
+	<dt><label for="username">Username</label></dt>
+	<dd><input type="text" id="username" name="username" value="" /></dd>
+	<dt><label for="password">Password</label></dt>
+	<dd><input type="password" id="password" name="password" value="" /></dd>
+	<dt><label for="remember" title="Duration of inactivity before you need to log in again.">Remember</label></dt>
+	<dd><select name="remember">
+        <option value="0">Till next map load</option>
+        <option value="-1" selected="selected">Session</option>
+        <!-- Number of seconds -->
+        <option value="1800">30 minutes</option>
+        <option value="3600">1 hour</option>
+        <option value="86400">1 day</option>
+        <option value="604800">1 week</option>
+        <option value="2678400">1 month</option>
+    </select></dd>
+	<dd><button type="submit">login</button></dd>
+</dl>
+</fieldset>
+</form>
+</div>
+<!-- #include file="footer.inc" -->

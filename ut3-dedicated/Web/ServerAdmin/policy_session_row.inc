@@ -1,0 +1,6 @@
+<tr>
+  <td><form method="post" action="<%webadmin.path%>/policy/bans"><div><%ban.uniqueid%> <input type="hidden" name="uniqueid" value="<%ban.uniqueid%>" /><input type="hidden" name="playername" value="&lt;unknown&gt;" /><input type="hidden" name="action" value="add" /><button type="submit" title="Make this ban permanent" style="<%ban.uniqueid.visible%>">Ban</button></div></form></td>
+  <td><form method="post" action="<%webadmin.path%>/policy/hashbans"><div><%ban.hash%> <input type="hidden" name="hashresponse" value="<%ban.hash%>" /><input type="hidden" name="playername" value="&lt;unknown&gt;" /><input type="hidden" name="action" value="add" /><button type="submit" title="Make this ban permanent" style="<%ban.hash.visible%>">Ban</button></div></form></td>
+  <td><form method="post" action="<%webadmin.path%>/policy"><div><%ban.ip%> <input type="hidden" name="ipmask" value="<%ban.ip%>" /><input type="hidden" name="policy" value="DENY" /><input type="hidden" name="action" value="add" /><button type="submit" title="Make this ban permanent" style="<%ban.ip.visible%>">Ban</button></div></form></td>
+  <td><form method="post" action=""><div><input type="hidden" name="banid" value="<%ban.banid%>" /><button type="submit" name="action" value="revoke">Revoke</button></div></form></td>
+</tr>

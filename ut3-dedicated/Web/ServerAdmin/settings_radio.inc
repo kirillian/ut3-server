@@ -1,0 +1,1 @@
+<input type="radio" name="<%setting.formname%>" value="<%setting.radio.value%>" id="<%setting.formname%>_<%setting.radio.index%>" <%setting.radio.selected%> /><label for="<%setting.formname%>_<%setting.radio.index%>"><%setting.radio.text%></label>

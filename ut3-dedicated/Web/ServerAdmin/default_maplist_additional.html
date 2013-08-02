@@ -1,0 +1,36 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<form method="post" action="<%page.fulluri%>">
+<fieldset>
+<legend>Map cycle selection</legend>
+    <select id="maplistid" name="maplistid">
+    <%maplists%>
+    </select>
+    <button type="submit" id="btnselect">edit map cycle</button>
+</fieldset>
+</form>
+
+<%maplist_editor%>
+
+<form method="post" action="<%page.fulluri%>">
+<fieldset>
+<legend>Create a new map cycle</legend>
+<input type="hidden" name="action" value="create" />
+<input type="hidden" name="maplistid" value="" />
+<dl>
+    <dt>Name</dt>
+    <dd><input type="text" name="name" /></dd>
+    <dt>Game type</dt>
+    <dd><select id="gametype" name="gametype"><%gametypes%></select></dd>
+    <dd><button type="submit" id="btncreate">create map cycle</button></dd>
+</dl>
+</fieldset>
+</form>
+
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

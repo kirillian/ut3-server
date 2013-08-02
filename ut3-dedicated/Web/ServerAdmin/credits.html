@@ -1,0 +1,172 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<div id="nojs">
+<h2>Unreal Tournament 3 &#8212; Credits</h2>
+<pre id="creditData" style="padding-left: 1em; font-family: sans-serif; font-size: 1.1em;"><%credits%></pre>
+</div>
+
+</div>
+
+<!-- #include file="navigation.inc" -->
+
+<script type="text/javascript">
+//<![CDATA[
+
+var creditData = $('#creditData').text();
+var nl = "\n";
+if (creditData.indexOf(nl) == -1) nl = "\r";
+creditData = creditData.split(nl);
+
+$('#nojs').remove();
+$('#header').remove();
+$('#menu').remove();
+
+var score = 0;
+var scoreMax = 0;
+var bullets = 0;
+
+var entries = new Array();
+
+$(document).ready(function(){
+    $('#footer').remove();
+    $('body').css('overflow', 'hidden');
+    $('body').css('padding', '0');
+    var inSection = false;
+    var roll = $('<div id="creditRoll"></div>');
+    
+    for (var i = 0; i < creditData.length; i++) 
+    {
+        if (i == 0)
+        {
+            entries[entries.length] = $('<div class="creditTitle">&#160;</div>');
+            entries[entries.length] = $('<div class="creditHead">'+creditData[i]+'</div>');
+            entries[entries.length] = $('<div class="creditSection"><br /><br /><br /><br /><br /><br /></div>');
+        }
+        else if (jQuery.trim(creditData[i]).length == 0) {
+            inSection = false;
+        }
+        else if (!inSection) {
+            entries[entries.length] = $('<div class="creditSection"><br /><br /><br /></div>');
+            entries[entries.length] = $('<div class="creditSection">'+creditData[i]+'</div>');
+            inSection = true;
+        }
+        else {
+            entries[entries.length] = $('<div class="creditItem"><span>'+creditData[i]+'</span>&#160;</div>');
+            ++scoreMax;
+        }
+    } 
+    $('#content').append(roll);
+    entryAnim();
+       
+    $('#content').append('<div id="creditAmmo" title="Reload!"><span>&#160;</span><span>&#160;</span><span>&#160;</span><span>&#160;</span><span>&#160;</span></div>');
+    $('#creditAmmo').click(reload);
+    reload();
+    
+    $('body').animate({
+        backgroundPosition: '(0px '+(-10*$(window).height())+'px)'
+    }, creditData.length*1000, 'linear');
+});
+
+var entryIdx = 0;
+var entryDone = 0;
+var speed = 20;
+var wheight = $(window).height()-30;
+
+function entryAnim() {
+    if (entryIdx >= entries.length) return;
+    var ent = entries[entryIdx++];
+    $('#creditRoll').append(ent);
+    ent.css('position', 'fixed');
+    var entHeight = ent.height();
+    ent.css('top', wheight);    
+    ent.css('opacity', '0.0');
+    ent.animate({opacity: 1.0},{queue: false, duration: entHeight*speed, easing: 'linear'})
+        .animate({top: wheight-entHeight}, {duration: entHeight*speed, easing: 'linear', complete: entryAnim_1})
+    ;
+}
+
+function entryAnim_1() {
+    entryAnim();
+    var ent = $(this);
+    var entHeight = ent.height();
+    var x = $(window).height()-entHeight*2;
+    ent.animate({top: entHeight}, {duration: x*speed, easing: 'linear', complete: entryAnim_2});
+    $('span', ent).click(function(){
+        if (bullets <= 0) return;
+        fireGun();
+        var x = $(this);
+        x.hide('explode', {}, 500, function(){
+            ++score;
+            x.remove();
+        });
+    });
+}
+
+function entryAnim_2() {
+    var ent = $(this);
+    var entHeight = ent.height();
+    ent.animate({opacity: 0.0},{queue: false, duration: entHeight*speed, easing: 'linear'})
+        .animate({top: 0}, {duration: entHeight*speed, easing: 'linear', complete: function() {
+            ent.remove();
+            ++entryDone;
+            if (entryDone >= entries.length) {
+                returnHome();
+            }
+        }})
+    ;
+}
+
+function fireGun() {
+    $('#creditAmmo span:visible:first').hide();
+    bullets = $('#creditAmmo span:visible').length;
+}
+
+function reload() {
+    $('#creditAmmo span').show();
+    bullets = $('#creditAmmo span:visible').length;
+}
+
+function returnHome() {
+    if (score > 0) {
+        windowAlert("Congratulations!\nYou scored "+Math.round(score/scoreMax*100)+"%");
+    }
+    window.location = '<%webadmin.path%>';
+}
+
+/**
+ * @author Alexander Farkas
+ * v. 1.02
+ */
+(function($) {
+	$.extend($.fx.step,{
+	    backgroundPosition: function(fx) {
+            if (fx.state === 0 && typeof fx.end == 'string') {
+                var start = $.curCSS(fx.elem,'backgroundPosition');
+                start = toArray(start);
+                fx.start = [start[0],start[2]];
+                var end = toArray(fx.end);
+                fx.end = [end[0],end[2]];
+                fx.unit = [end[1],end[3]];
+			}
+            var nowPosX = [];
+            nowPosX[0] = ((fx.end[0] - fx.start[0]) * fx.pos) + fx.start[0] + fx.unit[0];
+            nowPosX[1] = ((fx.end[1] - fx.start[1]) * fx.pos) + fx.start[1] + fx.unit[1];           
+            fx.elem.style.backgroundPosition = nowPosX[0]+' '+nowPosX[1];
+            
+           function toArray(strg){
+               strg = strg.replace(/left|top/g,'0px');
+               strg = strg.replace(/right|bottom/g,'100%');
+               strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g,"$1px$2");
+               var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+               return [parseFloat(res[1],10),res[2],parseFloat(res[3],10),res[4]];
+           }
+        }
+	});
+})(jQuery);
+
+//]]>
+</script>
+
+<!-- #include file="footer.inc" -->

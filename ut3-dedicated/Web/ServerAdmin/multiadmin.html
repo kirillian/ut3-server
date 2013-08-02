@@ -1,0 +1,94 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<fieldset id="mloverview">
+<legend>Administrators</legend>
+<form id="editlist" method="post" action="<%page.fulluri%>">
+<div>
+    <select id="adminidlist" name="adminid">
+    <option value=""></option>
+    <%admins%>
+    </select>
+    <button type="submit" id="btnselect">edit administrator</button>
+</div>
+</form>
+<form id="newadmin" method="post" action="<%page.fulluri%>">
+<div>
+    <br />
+    <label for="newadminid">Username:</label>
+    <input type="text" id="newadminid" name="adminid" value=""/>
+    <button type="submit" name="action" value="create">create administrator</button>
+</div>
+</form>
+</fieldset>
+
+<%editor%>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function(){
+    $('#adminidlist').change(function(){
+        $('#editlist').submit();
+    });
+    $('#newadmin').submit(function() {
+        var nlid = jQuery.trim($(this.adminid).val());
+        var isValid = true;
+        var nameregex = /^[a-z0-9_-]+$/i;
+        if (nlid.length == 0)
+        {
+            alert('The administrator name cannot be empty.');
+            isValid = false;
+        }
+        else if (!nameregex.test(nlid))
+        {
+            alert('The administrator name may only contain alphanumeric characters, including underscore and dash.\nRegular expression: '+nameregex);
+            isValid = false;
+        }
+        else {
+            $('#adminidlist option').each(function() {
+                var item = $(this);
+                if (item.text().toUpperCase() == nlid.toUpperCase()) {
+                    alert('There is already an administrator with the name '+nlid);
+                    isValid = false;
+                }
+            });
+        }
+        if (!isValid) return false;
+    });
+    $('#newadmin div *').hide();
+    $('#mloverview form, #mloverview div').css('display', 'inline');
+    $('#newadmin button').show().click(function () {
+        if (haveName)
+        {
+            haveName = false;
+            return true;
+        }
+        else {
+            messagePrompt('Enter the username of the new administrator', promptedName, '');
+            return false;
+        }
+    });
+});
+
+var haveName = false;
+
+function promptedName(newname) {
+    var mapid = jQuery.trim(newname);
+    if (mapid.length > 0) {
+        haveName = true;
+        $('#newadminid').val(mapid);
+        $('#newadmin button').click();
+        return true;
+    }
+    return false;
+}
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

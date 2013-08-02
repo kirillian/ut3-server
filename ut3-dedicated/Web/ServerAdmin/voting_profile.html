@@ -1,0 +1,58 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<fieldset id="profoverview">
+<legend>Game profiles</legend>
+<form id="editprofile" method="post" action="<%page.fulluri%>">
+<div>
+    <select id="profilename" name="profilename">
+    <option value=""></option>
+    <%profiles%>
+    </select>
+    <button type="submit" id="btnselect">edit profile</button>
+</div>
+</form>
+<form id="newprofile" method="post" action="<%page.fulluri%>">
+<div>
+    <br />
+    <label for="newprofilename">Profile name:</label>
+    <input type="text" id="newprofilename" name="newprofilename" value=""/>
+    <label for="newgameclass">Game type</label>
+    <select id="newgameclass" name="newgameclass"><%newgametypes%></select>
+    <button type="submit" name="action" value="create">create new profile</button>
+</div>
+</form>
+</fieldset>
+
+<%editor%>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function(){
+    $('#profilename').change(function(){
+        $('#editprofile').submit();
+    });
+    
+    $('#newprofile').submit(function(){
+        var profname = jQuery.trim($('#newprofilename').val());
+        var res = true;
+        $('#profilename option').each(function() {
+            if ($(this).text() == profname) {
+                res = false;
+                window.alert("There is already a profile with the name "+profname);
+                $('#newprofilename').focus();
+            }
+        });
+        return res;
+    });
+});
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

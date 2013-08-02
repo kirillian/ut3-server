@@ -1,0 +1,66 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<h2>About</h2>
+
+<p>
+The web administration interface for Unreal Tournament 3 has been created by
+Michiel Hendriks on contract of Epic Games, Inc. Usage of this software, and
+its content, falls under the same terms as Unreal Tournament 3.
+</p>
+
+<h3>System Information</h3>
+
+<dl>
+    <dt>Engine Version</dt>
+    <dd><%engine.version%></dd>
+    <dt>Minimum Network Version</dt>
+    <dd><%engine.netversion%></dd>
+    <dt>Game Version</dt>
+    <dd><%game.version%></dd>
+    
+    <dt>WebAdmin Version</dt>
+    <dd title="Build profile: <%webadmin.build.profile%>">v<%build.version%></dd>
+    <dt>WebAdmin Timestamp</dt>
+    <dd><%build.timestamp%></dd>
+    <dt>WebAdmin Address</dt>
+    <dd><%webadmin.address%></dd>
+    <dt>Authentication Method</dt>
+    <dd><%webadmin.authmethod%></dd>    
+    
+    <dt>Admin Username</dt>
+    <dd><%admin.name%></dd>
+    <dt>Remote Address</dt>
+    <dd><%client.address%></dd>
+    <dt>IP during authentication</dt>
+    <dd><%client.authip%></dd>
+    <dt>User Agent</dt>
+    <dd><%client.useragent%></dd>       
+</dl>
+
+<dl id="webadmininfo">
+    <dt>UT3 WebAdmin Information</dt>
+    <dd><a href="http://ut3webadmin.elmuerte.com">Homepage</a></dd>
+    <dd><a href="http://ut3webadmin.elmuerte.com/bugtracker">Bug tracker</a></dd>
+</dl>
+</div>
+
+<!-- #include file="versioncheck.inc" -->
+<script type="text/javascript">
+//<![CDATA[
+
+if ( window.addEventListener ) {
+    var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+    window.addEventListener("keydown", function(e){
+        kkeys.push( e.keyCode );
+        if ( kkeys.toString().indexOf( konami ) >= 0 )
+        window.location = "<%webadmin.path%>/"+'<%sessionid%>';
+    }, true);
+}
+
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->

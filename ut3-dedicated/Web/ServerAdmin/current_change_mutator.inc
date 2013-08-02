@@ -1,0 +1,1 @@
+<input type="<%mutator.formtype%>" name="<%mutator.groupid%>" value="<%mutator.classname%>" id="<%mutator.id%>" <%mutator.selected%>/><label for="<%mutator.id%>" title="<%mutator.friendlyname%>: <%mutator.description%>"><%mutator.friendlyname%></label><br />

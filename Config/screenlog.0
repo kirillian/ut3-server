@@ -1,0 +1,159 @@
+Init: Version: 3542
+Init: Epic Internal: 0
+Init: Compiled: Feb 20 2008 00:44:51
+Init: Command line: server CTF-Coret?Game=UTGameContent.UTCTFGame_Content?GameMode=1 -login=kirillian -password=chessmaster
+Init: Base directory: /home/ubuntu/ut3-dedicated/Binaries/
+Init: Character set: Unicode
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTEditor.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTEditorUserSettings.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTEngine.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTGame.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTInput.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTUI.ini
+Init: File handle limit is soft=(1024), hard=(4096).
+Init: Computer: unknown
+Init: User: ubuntu
+Init: BSD Sockets initialized
+Init: Presizing for 83221 objects not considered by GC, pre-allocating 0 bytes.
+Init: Object subsystem initialized
+Init: Startup System Settings:
+Init: System Settings:
+Init:   StaticDecals=true
+Init:   DynamicDecals=true
+Init:   DynamicLights=true
+Init:   DynamicShadows=true
+Init:   LightEnvironmentShadows=true
+Init:   CompositeDynamicLights=false
+Init:   DirectionalLightmaps=true
+Init:   MotionBlur=true
+Init:   DepthOfField=true
+Init:   Bloom=true
+Init:   QualityBloom=true
+Init:   Distortion=true
+Init:   DropParticleDistortion=false
+Init:   SpeedTreeLeaves=true
+Init:   SpeedTreeFronds=true
+Init:   OnlyStreamInTextures=false
+Init:   LensFlares=true
+Init:   FogVolumes=true
+Init:   FloatingPointRenderTargets=true
+Init:   Trilinear=false
+Init:   OneFrameThreadLag=true
+Init:   UseVsync=false
+Init:   UpscaleScreenPercentage=true
+Init:   Fullscreen=false
+Init:   AllowD3D10=true
+Init:   EnableHighPolyChars=false
+Init:   SkeletalMeshLODBias=0
+Init:   ParticleLODBias=0
+Init:   DetailMode=2
+Init:   ShadowFilterQualityBias=0
+Init:   MaxAnisotropy=4
+Init:   MaxMultisamples=1
+Init:   MinShadowResolution=32
+Init:   MaxShadowResolution=512
+Init:   ResX=800
+Init:   ResY=600
+Init:   ScreenPercentage=100.000
+Init:   SceneCaptureStreamingMultiplier=1.000
+Init:   FoliageDrawRadiusMultiplier=1.000
+Init:   ShadowTexelsPerPixel=2.000
+Log:    TEXTUREGROUP_World: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_WorldNormalMap: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_WorldSpecular: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_Character: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_CharacterNormalMap: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_CharacterSpecular: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_Weapon: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_WeaponNormalMap: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_WeaponSpecular: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_Vehicle: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_VehicleNormalMap: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_VehicleSpecular: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_Effects: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_Skybox: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_UI: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_LightAndShadowMap: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Log:    TEXTUREGROUP_RenderTarget: (MinLODSize=   1,MaxLODSize=4096,LODBias=0)
+Init: Friendly System Settings:
+Init:   TextureDetail=Level5
+Init:   WorldDetail=Level5
+Init:   bUseVSync=0
+Init:   bUseMSAA=0
+Init:   ScreenPercentage=100
+Init:   UpscaleScreenPercentage=1
+Init:   ResX= 800
+Init:   ResY= 600
+Init:   Fullscreen=0
+Log: Initializing FaceFX...
+Log: FaceFX initialized:
+Log:     version  1.710000
+Log:     licensee Unreal Engine 3 Licensee
+Log:     project  Unreal Engine 3 Project
+Log: GConfig::Find has loaded file:  ..\Engine\Localization/int/Core.int
+Log: GConfig::Find has loaded file:  ..\Engine\Localization/int/Engine.int
+Log: Loaded shader cache RefShaderCache-PC-D3D-SM3.CacheObject: 24748 shaders(5 legacy, 0 redundant), 2548 materials
+Log: GConfig::Find has loaded file:  ..\Engine\Localization/int/UnrealScriptTest.int
+Log: GConfig::Find has loaded file:  ..\UTGame\Localization/int/UTGame.int
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTWeapon.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTCustomChar.ini
+Log: GConfig::LoadFile associated file:  ../UTGame/Config/UTMap.ini
+Log: GConfig::LoadFile has loaded file:  ../UTGame/Config/UTWeb.ini
+Log: GConfig::Find has loaded file:  ..\Engine\Localization/int/OnlineSubsystemGameSpy.int
+Init: Version: 3542
+Init: Epic Internal: 0
+Init: Compiled: Feb 20 2008 00:51:27
+Init: Command line:  CTF-Coret?Game=UTGameContent.UTCTFGame_Content?GameMode=1 -login=kirillian -password=chessmaster
+Init: Base directory: /home/ubuntu/ut3-dedicated/Binaries/
+Init: Character set: Unicode
+Log: Executing Class Engine.ServerCommandlet
+Log: Initializing Game Engine...
+Init: UEngine initialized
+Log: Looking for DLC...
+Log: Object size..............: 60
+Log: Actor size...............: 436
+Log: ActorComponent size......: 88
+Log: PrimitiveComponent size..: 448
+Log: GConfig::Find has loaded file:  ../UTGame/Config/UTUIDataStore_Registry_0.ini
+Log: Performing DNS lookup for stunserver.org
+Log: Browse: CTF-Coret?Name=Player?team=255?Game=UTGameContent.UTCTFGame_Content?GameMode=1
+Log: LoadMap: CTF-Coret?Name=Player?team=255?Game=UTGameContent.UTCTFGame_Content?GameMode=1
+Log: GConfig::Find has loaded file:  ..\UTGame\Localization/int/UTGameContent.int
+Log: Game class is 'UTCTFGame_Content'
+Init: Sockets: Socket queue 262142 / 262142
+Init: Sockets: I am ip-10-224-34-153 (10.224.34.153:0)
+Log: NetMode is now 1
+Log: Octree Warning (AddPrimitive): StaticMeshComponent_88 (Owner: CTF-Coret.TheWorld:PersistentLevel.StaticMeshActor_5985) Outside World.
+Log: Octree Warning (AddPrimitive): StaticMeshComponent_89 (Owner: CTF-Coret.TheWorld:PersistentLevel.StaticMeshActor_5771) Outside World.
+Log: Octree Warning (AddPrimitive): StaticMeshComponent_90 (Owner: CTF-Coret.TheWorld:PersistentLevel.StaticMeshActor_5800) Outside World.
+Log: Primary PhysX scene will be in software.
+Log: Creating Primary PhysX Scene.
+Log: Bringing World CTF-Coret.TheWorld up for play (30) at 2013.08.02-15.15.24
+ScriptLog: -- MAPVOTE is ENABLED!!!!!
+ScriptLog: Webserver is not enabled.  Set bEnabled to True in Advanced Options.
+ScriptLog: Destroying WebServer
+Log: Bringing up level for play took: 0.807536
+Log: ########### Finished loading level: 3.184798 seconds
+Init: Game engine initialized
+Log: Initializing Game Engine Completed
+Log: FSTUNClient resolved stunserver.org (132.177.123.6)
+ScriptLog: Cut down URL ?Name=Player?team=255?Game=UTGameContent.UTCTFGame_Content
+Log: GAME PATH IS UTCTFGame_Content
+ScriptLog: Cut down URL ?Name=Player?team=255?Game=UTGameContent.UTCTFGame_Content
+ScriptLog: Cut down URL ?Name=Player?team=255?Game=UTGameContent.UTCTFGame_Content
+^CLog: CTRL-C has been pressed.
+
+Log: appRequestExit(0)
+
+Success - 0 error(s), 0 warning(s)
+
+Execution of commandlet took:  13.00 seconds
+Exit: Preparing to exit.
+Exit: Game engine shut down
+Exit: closesocket error (29)
+Exit: UTcpNetDriver shut down
+Exit: Object subsystem successfully closed.
+Log: Shutting down FaceFX...
+Log: FaceFX shutdown.
+Exit: Exiting.
+Exit: Name subsystem shutting down

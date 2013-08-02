@@ -1,0 +1,47 @@
+<!-- #include file="header.inc" -->
+
+<div id="content">
+
+<p>Note: editing gametype settings will result in the loading of the package. 
+If the mutator is currently not active the current players might need to
+download the newly loaded package.</p>
+
+<form method="post" action="<%page.fulluri%>" id="gametypeselect">
+<fieldset>
+<legend>Gametype selection</legend>
+    <select id="gametype" name="gametype">
+    <option value=""></option>
+    <%gametypes%>
+    </select>
+    <button type="submit" name="action" value="select" id="btnselect">edit gametype</button>
+</fieldset>
+</form>
+
+<form method="post" action="<%page.fulluri%>">
+<fieldset>
+<legend>Settings for <em><%editgametype.name%></em></legend>
+<input type="hidden" name="gametype" value="<%editgametype.class%>" />
+
+<%settings%>
+
+<button type="submit" name="action" value="save" id="btnsave">save settings</button>
+</fieldset>
+</form>
+
+<p><sup>1)</sup> settings shown for these gametypes may not reflect the actual used and available settings, the best guess is shown.</p> 
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+$(document).ready(function(){
+    $('#gametype').change(function(){
+        $('#gametypeselect').submit();
+    });
+});
+    
+//]]>
+</script>
+
+<!-- #include file="navigation.inc" -->
+<!-- #include file="footer.inc" -->
